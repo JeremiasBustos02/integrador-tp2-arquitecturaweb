@@ -2,17 +2,33 @@ package edu.empresa.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "Carrera")
 public class Carrera {
     @Id
-    private int idCarrera;
+    private int id_carrera;
     @Column
     private String nombre;
     @Column
     private int duracion;
 
-    @ManyToMany(mappedBy = "carreras", fetch = FetchType.LAZY)
-    private List<Estudiante> estudiantes;
+    @OneToMany(mappedBy = "carrera")
+    private List<EstudianteCarrera> estudiantes = new ArrayList<>();
+
+    public Carrera() {
+        super();
+    }
+
+    public Carrera(int id_carrera, String nombre, int duracion) {
+        this.id_carrera = id_carrera;
+        this.nombre = nombre;
+        this.duracion = duracion;
+    }
+
+    public int getIdCarrera() {
+        return id_carrera;
+    }
 }
