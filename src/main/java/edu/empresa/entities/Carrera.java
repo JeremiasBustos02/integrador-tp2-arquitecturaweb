@@ -1,9 +1,6 @@
 package edu.empresa.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -16,6 +13,6 @@ public class Carrera {
     @Column
     private int duracion;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "carreras", fetch = FetchType.LAZY)
     private List<Estudiante> estudiantes;
 }

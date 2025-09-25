@@ -21,7 +21,7 @@ public class Estudiante {
     @Column
     private String ciudad;
 
-    @ManyToMany(mappedBy = "personas", fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Carrera> carreras;
 
 
